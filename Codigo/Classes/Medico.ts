@@ -1,3 +1,5 @@
+import Bebe from "./Bebe";
+
 export default class Medico{
 
     private crm: String;
@@ -19,12 +21,36 @@ export default class Medico{
         return this.crm;
     }
 
-    public setMedicoCRM(crm : String){
+    public setMedicoCRM(crm: String){
         this.crm = crm;
+    }
+
+    public getMedicoNome(){
+        return this.nome;
+    }
+
+    public setMedicoNome(nome: String){
+        this.nome = nome;
+    }
+
+    public getMedicoTel(){
+        return this.telefone;
+    }
+
+    public setMedicoTel(tel: number){
+        this.telefone = tel;
+    }
+
+    public getMedicoEsp(){
+        return this.especialidade;
+    }
+
+    public setMedicoEsp(esp: String){
+        this.especialidade = esp;
     }
     
     public getInfoMed(){
-        console.log(`Nome: ${this.nome}, CRM: ${this.getMedicoCRM}, tel: ${this.telefone}, esp: ${this.especialidade}`);
+        return console.log(`Nome: ${this.nome}, CRM: ${this.crm}, telefone: ${this.telefone}, especialidade: ${this.especialidade}`);
     }
 
 
@@ -33,13 +59,16 @@ export default class Medico{
     } 
 }
 
-let med1 = new Medico("12345SP", "zezim", 98898989, "cardicao");
+let med1 = new Medico("12345SP", "zezim", 98898989, "cardiaco");
 
 med1.setMedicoCRM("98765SP");
 console.log(med1.getMedicoCRM());
-med1.getInfoMed;
+med1.getInfoMed();
+
+let bebe1 = new Bebe("Paulo", new Date("2010-01-01"), 10, 40, new Medico("765435SP", "Matheus", 28955242, "Obstetra"));
+
+let bebe2 = new Bebe("Paulo", new Date("2010-01-01"), 10, 40, med1);
+console.log(bebe2);
 
 //Jeito sem private
 //console.log(`Nome: ${med1.nome}, CRM: ${med1.crm}, tel: ${med1.telefone}, esp: ${med1.especialidade}`);
-
-
