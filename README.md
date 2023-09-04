@@ -44,6 +44,12 @@ Siga os seguintes passos para inicializar o trabalho
 }
 ```
 
+## Instalando o Prisma (ORM):
+
+```npm install prisma --save-dev```
+
+```npx prisma init --datasource-provider sqlite```
+
 ## Como compilar o projeto
 
 ```npx tsc``` - Transforma typscript -> javascript :
