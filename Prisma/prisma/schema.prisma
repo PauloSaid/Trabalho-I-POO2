@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Mae {
+  cpf    Int     @id @unique @default(autoincrement())
+  telefone Int   
+  nome String?
+  dataNasc DateTime
+  endereco String
+  bebes Bebe[]
+}
+
+model Bebe {
+  nome      String    
+  dataNasc  DateTime
+  pesoNasc  Int
+  altura    Int
+  maeBebe   Mae     @relation(fields: [cpfMae], references: [cpf])
+  cpfMae    Int     @id @unique
+  medicoBebe Medico @relation(fields: [crmMedico], references: [crm])
+  crmMedico String  @unique
+
+}
+
+model Medico {
+  crm  String     @id @unique
+  nome String?
+  telefone Int
+  especialidade String
+  bebes Bebe[]
+}
